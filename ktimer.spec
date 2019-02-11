@@ -5,18 +5,18 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ktimer
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/ktimer-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/ktimer-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/ktimer-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/ktimer-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/ktimer-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/ktimer-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: ktimer-bin
-Requires: ktimer-data
-Requires: ktimer-license
-Requires: ktimer-locales
+Requires: ktimer-bin = %{version}-%{release}
+Requires: ktimer-data = %{version}-%{release}
+Requires: ktimer-license = %{version}-%{release}
+Requires: ktimer-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 
@@ -26,8 +26,8 @@ No detailed description available
 %package bin
 Summary: bin components for the ktimer package.
 Group: Binaries
-Requires: ktimer-data
-Requires: ktimer-license
+Requires: ktimer-data = %{version}-%{release}
+Requires: ktimer-license = %{version}-%{release}
 
 %description bin
 bin components for the ktimer package.
@@ -66,25 +66,25 @@ locales components for the ktimer package.
 
 
 %prep
-%setup -q -n ktimer-18.08.0
+%setup -q -n ktimer-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535202073
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549875093
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535202073
+export SOURCE_DATE_EPOCH=1549875093
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/ktimer
-cp COPYING %{buildroot}/usr/share/doc/ktimer/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/ktimer
+cp COPYING %{buildroot}/usr/share/package-licenses/ktimer/COPYING
 pushd clr-build
 %make_install
 popd
@@ -108,12 +108,8 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
-/usr/share/doc/HTML/ca/ktimer/first.png
 /usr/share/doc/HTML/ca/ktimer/index.cache.bz2
 /usr/share/doc/HTML/ca/ktimer/index.docbook
-/usr/share/doc/HTML/ca/ktimer/main.png
-/usr/share/doc/HTML/ca/ktimer/running.png
-/usr/share/doc/HTML/ca/ktimer/two_at_once.png
 /usr/share/doc/HTML/cs/ktimer/index.cache.bz2
 /usr/share/doc/HTML/cs/ktimer/index.docbook
 /usr/share/doc/HTML/de/ktimer/first.png
@@ -148,12 +144,16 @@ popd
 /usr/share/doc/HTML/sr/ktimer/index.docbook
 /usr/share/doc/HTML/sv/ktimer/index.cache.bz2
 /usr/share/doc/HTML/sv/ktimer/index.docbook
+/usr/share/doc/HTML/uk/ktimer/first.png
 /usr/share/doc/HTML/uk/ktimer/index.cache.bz2
 /usr/share/doc/HTML/uk/ktimer/index.docbook
+/usr/share/doc/HTML/uk/ktimer/main.png
+/usr/share/doc/HTML/uk/ktimer/running.png
+/usr/share/doc/HTML/uk/ktimer/two_at_once.png
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/ktimer/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/ktimer/COPYING
 
 %files locales -f ktimer.lang
 %defattr(-,root,root,-)
