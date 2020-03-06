@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : ktimer
-Version  : 19.12.2
-Release  : 17
-URL      : https://download.kde.org/stable/release-service/19.12.2/src/ktimer-19.12.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.2/src/ktimer-19.12.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.2/src/ktimer-19.12.2.tar.xz.sig
+Version  : 19.12.3
+Release  : 18
+URL      : https://download.kde.org/stable/release-service/19.12.3/src/ktimer-19.12.3.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.3/src/ktimer-19.12.3.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.3/src/ktimer-19.12.3.tar.xz.sig
 Summary  : Countdown Launcher
 Group    : Development/Tools
 License  : GPL-2.0
@@ -66,15 +66,15 @@ locales components for the ktimer package.
 
 
 %prep
-%setup -q -n ktimer-19.12.2
-cd %{_builddir}/ktimer-19.12.2
+%setup -q -n ktimer-19.12.3
+cd %{_builddir}/ktimer-19.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581032068
+export SOURCE_DATE_EPOCH=1583457335
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -91,10 +91,10 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1581032068
+export SOURCE_DATE_EPOCH=1583457335
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ktimer
-cp %{_builddir}/ktimer-19.12.2/COPYING %{buildroot}/usr/share/package-licenses/ktimer/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/ktimer-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/ktimer/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
