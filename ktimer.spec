@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : ktimer
-Version  : 21.04.0
-Release  : 28
-URL      : https://download.kde.org/stable/release-service/21.04.0/src/ktimer-21.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.0/src/ktimer-21.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.0/src/ktimer-21.04.0.tar.xz.sig
+Version  : 21.04.2
+Release  : 29
+URL      : https://download.kde.org/stable/release-service/21.04.2/src/ktimer-21.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.2/src/ktimer-21.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.2/src/ktimer-21.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -66,15 +66,15 @@ locales components for the ktimer package.
 
 
 %prep
-%setup -q -n ktimer-21.04.0
-cd %{_builddir}/ktimer-21.04.0
+%setup -q -n ktimer-21.04.2
+cd %{_builddir}/ktimer-21.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1619224722
+export SOURCE_DATE_EPOCH=1623401948
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,10 +90,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1619224722
+export SOURCE_DATE_EPOCH=1623401948
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ktimer
-cp %{_builddir}/ktimer-21.04.0/COPYING %{buildroot}/usr/share/package-licenses/ktimer/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/ktimer-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/ktimer/7c203dee3a03037da436df03c4b25b659c073976
 pushd clr-build
 %make_install
 popd
